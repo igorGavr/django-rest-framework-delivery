@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'drf_yasg',
+    'channels',
 
     'market',
 ]
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'delivery.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,6 +124,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DATA_DIR = os.path.join(BASE_DIR, '..\init_data')
+
+ASGI_APPLICATION = "delivery.market.ws_route_app.application"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

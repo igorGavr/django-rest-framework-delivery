@@ -25,7 +25,10 @@ from market.views.category import CategoryViewSet
 router = routers.DefaultRouter()
 router.register(r'category', CategoryViewSet)
 
+from market.views.index import index
+
 urlpatterns = [
+    path('', index),
     path('admin/', admin.site.urls),
     path('v1/', include([
         path('generic/', include(router.urls)),
